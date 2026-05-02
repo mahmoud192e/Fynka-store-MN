@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fyonka store - هدايا مميزة لكل المناسبات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #FFF5F7;
+            color: #333;
+        }
+        /* هيدر زي المسطرة */
+        .header {
+            background: linear-gradient(90deg, #FFB6C1 0%, #FFC0CB 50%, #FFB6C1 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(255,182,193,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid white;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .whatsapp-header {
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .whatsapp-header:hover { transform: scale(1.05); }
+
+        /* هيرو سيكشن */
+        .hero {
+            background: linear-gradient(135deg, #FFE4E9 0%, #FFD1DC 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 36px;
+            color: #C71585;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,105,180,0.15);
+            transition: 0.3s;
+        }
+        .featured-card:hover { transform: translateY(-5px); }
+        .featured-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .featured-card h3 {
+            padding: 15px;
+            color: #C71585;
+            font-size: 18px;
+        }
+        .btn-main {
+            background: #FF69B4;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+        }
+        .btn-main:hover { background: #FF1493; }
+
+        /* قسم المنتجات */
+        .products {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #C71585;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #FF69B4;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(255,105,180,0.2); }
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .card-body { padding: 20px; }
+        .card-body h3 {
+            color: #C71585;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .card-body p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            min-height: 70px;
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-whatsapp:hover { background: #20BA5A; }
+
+        /* فوتر */
+        .footer {
+            background: #C71585;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        .footer a { color: #FFD1DC; text-decoration: none; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 99;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            .header-content { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر زي المسطرة -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">fyonka store 🎀</div>
+            <a href="https://wa.me/201278139983" class="whatsapp-header">اطلب واتساب +20 12 78139983</a>
+        </div>
+    </header>
+
+    <!-- الهيرو - 3 منتجات في النص + زر -->
+    <section class="hero">
+        <h1>هداياك المميزة تبدأ من هنا</h1>
+        <p>كل قطعة في fyonka معمولة بحب عشان مناسباتك تبقى ذكرى متتنسيش</p>
+        
+        <div class="featured">
+       
+            <div class="featured-card">
+                <img src="2.jpg" alt="مراية الفاتحة">
+                <h3>مراية الفاتحة باللولي</h3>
+            </div>
+            <div class="featured-card">
+                <img src="15.jpg" alt="مج حراري محفور">
+                <h3>مج حراري بالأسماء</h3>
+            </div>
+        </div>
+
+        <a href="#products" class="btn-main">تصفح كل المنتجات 🎁</a>
+    </section>
+
+    <!-- كل المنتجات -->
+    <section class="products" id="products">
+        <h2 class="section-title">منتجاتنا المميزة</h2>
+        <div class="grid">
+            
+            <!-- 1. طقم عقد قران -->
+
+            <!-- 2. مراية الفاتحة -->
+            <div class="card">
+                <img src="3.jpg" alt="مراية الفاتحة">
+                <div class="card-body">
+                    <h3>مراية الفاتحة باللولي</h3>
+                    <p>للعرايس الرقيقة. مراية دائرية بإطار لولي أبيض وفيونكة ستان، محفور عليها الأسماء والتاريخ. بتخلي لحظة الفاتحة أحلى وأحلى.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20مراية%20الفاتحة" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 3. صينية الشبكة -->
+            <div class="card">
+                <img src="1.jpg" alt="صينية الشبكة">
+                <div class="card-body">
+                    <h3>صينية مراية للشبكة</h3>
+                    <p>قدمي شبكتك بشياكة. صينية مراية فاخرة بمسكة ذهبية وورد صناعي، بتخلي شكل الدبل والشبكة تحفة في الصور.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20صينية%20الشبكة" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 4. أساور العيون -->
+            <div class="card">
+                <img src="5.jpg" alt="أساور العيون">
+                <div class="card-body">
+                    <h3>أساور العيون المطبوعة</h3>
+                    <p>ترند السنة. أسورة ستانلس بصورة عيون اللي بتحبه. متاحة حريمي ورجالي. هدية مختلفة ومليانة مشاعر ومحدش بيعملها زيك.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20أساور%20العيون" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 5. شوكلاتة بالصورة -->
+            <div class="card">
+                <img src="6.jpg" alt="شوكلاتة بالصورة">
+                <div class="card-body">
+                    <h3>شوكلاتة بصورتك</h3>
+                    <p>فرّح اللي بتحبه بحاجة حلوة وشكلها أحلى. شوكلاتة فاخرة مطبوع عليها أي صورة تختارها. مناسبة للخطوبة والمناسبات الخاصة.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20الشوكلاتة" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 6. ستاندات رمضان -->
+            <div class="card">
+                <img src="14.jpg" alt="ستاندات رمضان">
+                <div class="card-body">
+                    <h3>ستاند رمضان كريم ذهبي</h3>
+                    <p>زيني بيتك في رمضان بلمسة فخامة. ستاند أكريليك ذهبي بكلمة "رمضان كريم" وهلال. بيدي جو روحاني وشيك جداً للسفرة.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20ستاند%20رمضان" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 7. أقلام وستاندات -->
+            <div class="card">
+                <img src="9.jpg" alt="أقلام وستاندات">
+                <div class="card-body">
+                    <h3>أقلام وستاندات بالأسماء</h3>
+                    <p>هدية مثالية للمدرسات والدكاترة. قلم وستاند مكتب أكريليك محفور عليهم الاسم. شيك على المكتب وعملي جداً.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20الأقلام%20والستاندات" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 8. محافظ جلد -->
+            <div class="card">
+                <img src="12.jpg" alt="محافظ جلد">
+                <div class="card-body">
+                    <h3>محافظ جلد محفورة</h3>
+                    <p>خلي هديته شخصية 100%. محفظة جلد طبيعي رجالي أو حريمي، بنحفر عليها الاسم أو جملة من اختيارك. فخامة تدوم.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20المحافظ%20الجلد" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 9. مجات ديزني -->
+            <div class="card">
+                <img src="11.jpg" alt="مجات ديزني">
+                <div class="card-body">
+                    <h3>مجات ديزني للكابلز</h3>
+                    <p>لعشاق ديزني. أطقم مجات علاء الدين وياسمين، أو روبانزل وفلين. بيد القلب المميزة بتخليها أحلى هدية فالنتاين أو ذكرى.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20مجات%20ديزني" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 10. خاتم تسبيح -->
+            <div class="card">
+                <img src="7.jpg" alt="خاتم تسبيح">
+                <div class="card-body">
+                    <h3>خاتم التسبيح الإلكتروني</h3>
+                    <p>سبّح في أي وقت وأي مكان. خاتم تسبيح ديجيتال بألوان كتير. خفيف وشيك وعملي، أحلى هدية تاخد عليها ثواب.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20خاتم%20التسبيح" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 11. هدايا سبوع -->
+            <div class="card">
+                <img src="8.jpg" alt="هدايا سبوع">
+                <div class="card-body">
+                    <h3>توزيعات السبوع الفاخرة</h3>
+                    <p>استقبلي ضيوف النونو بشياكة. علبة فيها خاتم تسبيح مزين باللولي وشوكلاتة وكارت باسم المولود. ذكرى راقية للسبوع.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20توزيعات%20السبوع" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- 12. مج حراري -->
+            <div class="card">
+                <img src="15.jpg" alt="مج حراري">
+                <div class="card-body">
+                    <h3>مج حراري محفور</h3>
+                    <p>للمشروبات السخنة بستايل. مج حراري أسود بيحافظ على الحرارة، محفور عليه الاسم بالليزر. هدية فخمة وعملية جداً.</p>
+                    <a href="https://wa.me/201278139983?text=عايز%20تفاصيل%20المج%20الحراري" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <h3>fyonka store 🎀</h3>
+        <p>بنعمل هدايا مميزة لكل مناسباتك بحب</p>
+        <p><a href="https://wa.me/201278139983">واتساب: +20 12 78139983</a></p>
+        <p style="margin-top: 15px; font-size: 14px;">© 2026 fyonka store - كل الحقوق محفوظة</p>
+    </footer>
+
+    <!-- زر واتساب ثابت -->
+    <a href="https://wa.me/201278139983" class="whatsapp-float">💬</a>
+
+</body>
+</html>
